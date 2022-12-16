@@ -18,7 +18,7 @@ const NewMailForm = ({loginData, setLoginData}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch('http://localhost:5000/smtp', {
+        const response = await fetch('http://redesmails.com:5000/smtp', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

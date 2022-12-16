@@ -10,7 +10,7 @@ const Inbox = ({loginData, setLoginData}) => {
 
     useEffect(() => {
         const getMails = async () => {
-            const response = await fetch('http://localhost:5000/pop', {
+            const response = await fetch('http://redesmails.com:5000/pop', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
