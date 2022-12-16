@@ -11,36 +11,44 @@ import Login from './pages/login/login';
 import Layout from './components/layout/layout';
 import NewMailForm from './components/NewMailForm/NewMailForm';
 import Inbox from './components/inbox/inbox';
+import React, {useEffect} from 'react';
 
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        path: "/mails",
-        element: <Mailer />,
-        children: [
-          {
-            path: "send-new",
-            element: <NewMailForm />,
-          },
-          {
-            path: "all-mails",
-            element: <Inbox />,
-          },
-          
-        ],
-      },
-      {
-        path: "/",
-        element: <Login />,
-      }] 
-  }
-]);
 
 function App() {
+  const [data, setData] = React.useState({
+      email: '',
+      password: '',
+  });
+
+  
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        {
+          path: "/mails",
+          element: <Mailer />,
+          children: [
+            {
+              path: "send-new",
+              element: <NewMailForm loginData={data} setLoginData={setData} />,
+            },
+            {
+              path: "all-mails",
+              element: <Inbox loginData={data} setLoginData={setData} />,
+            },
+            
+          ],
+        },
+        {
+          path: "/",
+          element: <Login loginData={data} setLoginData={setData} />,
+        }] 
+    }
+  ]);
+
   return (
     <div className="App">
       <RouterProvider router={router} />

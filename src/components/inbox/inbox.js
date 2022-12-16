@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Container } from "react-bootstrap";
 import InboxItem from "./inbox-item";
 
@@ -30,7 +30,20 @@ const MAILS = [
     },
 ]
 
-const Inbox = () => {
+const Inbox = ({loginData, setLoginData}) => {
+
+    const [mails, setMails] = React.useState(MAILS);
+
+    useEffect(() => {
+        const getMails = async () => {
+            const response = await fetch('http://localhost:5000/pop');
+            const data = await response.json();
+            setMails(data);
+        }
+
+        getMails();
+    }, []);
+
     return (
         <Container>
             <h1>Bandeja de entrada</h1>

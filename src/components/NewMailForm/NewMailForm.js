@@ -3,7 +3,7 @@ import { Container, Col, Row } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-const NewMailForm = () => {
+const NewMailForm = ({loginData, setLoginData}) => {
 
     const [data, setData] = React.useState({
         message: '',
@@ -15,7 +15,7 @@ const NewMailForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch('http://localhost:3001/send', {
+        const response = await fetch('http://localhost:5000/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -5,24 +5,21 @@ import './login.css';
 import { useNavigate } from "react-router-dom";
 // import pop3 from '../../services/pop3-connection';
 
-const Login = () => {
+const Login = ({loginData, setLoginData}) => {
 
-    const [data, setData] = React.useState({
-        email: '',
-        password: '',
-    });
+    
     const navigate = useNavigate();
         
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch('http://localhost:3001/send', {
+        const response = await fetch('http://localhost:5000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(loginData)
         });
 
         const content = await response.json();
@@ -36,8 +33,8 @@ const Login = () => {
     }
 
     const handleChange = (e) => {
-        setData({
-            ...data,
+        setLoginData({
+            ...loginData,
             [e.target.name]: e.target.value
         })
     }
