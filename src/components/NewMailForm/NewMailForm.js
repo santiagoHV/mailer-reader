@@ -2,8 +2,10 @@ import React from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useNavigate } from "react-router-dom";
 
 const NewMailForm = ({loginData, setLoginData}) => {
+    const navigate = useNavigate();
 
     const [data, setData] = React.useState({
         sender: '', 
@@ -26,6 +28,19 @@ const NewMailForm = ({loginData, setLoginData}) => {
         });
 
         const content = await response.json();
+
+        if (content.message === 'Email sent!') {
+            alert('Mail sent');
+            setData({
+                sender: '',
+                message: '',
+                subject: '',
+                recipients: ''
+            })
+        } else {
+            alert('Error'); 
+            navigate('/')
+        }
     }
 
     const handleChange = (e) => {

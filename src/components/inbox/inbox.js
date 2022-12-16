@@ -1,8 +1,10 @@
 import React, {useEffect} from "react";
 import { Container } from "react-bootstrap";
 import InboxItem from "./inbox-item";
+import {useNavigate} from "react-router-dom";
 
 const Inbox = ({loginData, setLoginData}) => {
+    const navigate = useNavigate();
 
     const [mails, setMails] = React.useState([]);
 
@@ -17,7 +19,13 @@ const Inbox = ({loginData, setLoginData}) => {
                     body: JSON.stringify(loginData)
                     });
             const data = await response.json();
-            setMails(data);
+
+            if(data.message === 'error'){
+                alert('error');
+                navigate('/');
+            }else{
+                setMails(data);
+            }
         }
 
         getMails();
