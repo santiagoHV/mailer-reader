@@ -13,12 +13,12 @@ const Mailer = () => {
                     <Nav variant="tabs" defaultActiveKey="#first">
                         <Nav.Item>
                             <Nav.Link>
-                                <Link to="/send-new">Correo nuevo</Link>
+                                <Link to="/mails/send-new">Correo nuevo</Link>
                             </Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                             <Nav.Link>
-                                <Link to="/all-mails">Bandeja de entrada</Link>
+                                <Link to="/mails/all-mails">Bandeja de entrada</Link>
                             </Nav.Link>
                         </Nav.Item>
                     </Nav>

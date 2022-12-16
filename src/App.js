@@ -19,22 +19,22 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/",
+        path: "/mails",
         element: <Mailer />,
         children: [
           {
-            path: "/send-new",
+            path: "send-new",
             element: <NewMailForm />,
           },
           {
-            path: "/all-mails",
+            path: "all-mails",
             element: <Inbox />,
           },
           
         ],
       },
       {
-        path: "/login",
+        path: "/",
         element: <Login />,
       }] 
   }
