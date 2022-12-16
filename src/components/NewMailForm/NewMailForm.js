@@ -6,20 +6,22 @@ import Form from 'react-bootstrap/Form';
 const NewMailForm = ({loginData, setLoginData}) => {
 
     const [data, setData] = React.useState({
+        sender: '', 
         message: '',
         subject: '',
-        to: ''
+        recipients: ''
     });
         
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch('http://localhost:5000/', {
+        const response = await fetch('http://localhost:5000/smtp', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
+            mode: 'cors',
             body: JSON.stringify(data)
         });
 
@@ -29,6 +31,7 @@ const NewMailForm = ({loginData, setLoginData}) => {
     const handleChange = (e) => {
         setData({
             ...data,
+            sender: loginData.user,
             [e.target.name]: e.target.value
         })
     }
@@ -45,7 +48,7 @@ const NewMailForm = ({loginData, setLoginData}) => {
                             type="email" 
                             placeholder="Enter email" 
                             onChange={handleChange}
-                            name="to"
+                            name="recipients"
                             />
                         </Form.Group>   
                     </Col>
@@ -74,7 +77,7 @@ const NewMailForm = ({loginData, setLoginData}) => {
                     variant="primary" 
                     type="submit"
                     onChange={handleChange}
-                    onSubmit={handleSubmit}>
+                    onClick={handleSubmit}>
                     Submit
                 </Button>
             </Form>

@@ -19,13 +19,15 @@ const Login = ({loginData, setLoginData}) => {
             headers: {
                 'Content-Type': 'application/json'
             },
+            mode: 'cors',
             body: JSON.stringify(loginData)
         });
 
         const content = await response.json();
+        console.log(content);
 
-        if (content.status === 'ok') {
-            navigate('/mailer');
+        if (content.message === 'Login success') {
+            navigate('/mails/send-new');
         } else {
             alert('credenciales incorrectas');
             console.log('error');
@@ -47,7 +49,7 @@ const Login = ({loginData, setLoginData}) => {
                 <Form.Group >
                 <Form.Label>Usuario</Form.Label>
                 <Form.Control
-                    name={'email'}
+                    name={'user'}
                     onChange={handleChange}
                 />
                 </Form.Group>

@@ -17,7 +17,7 @@ import React, {useEffect} from 'react';
 
 function App() {
   const [data, setData] = React.useState({
-      email: '',
+      user: '',
       password: '',
   });
 

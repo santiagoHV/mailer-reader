@@ -7,9 +7,9 @@ const InboxItem = ({ data }) => {
         <Card className={'mt-4'} style={{ width: '100%' }}>
             <Card.Header>Nuevo mensaje</Card.Header>
             <ListGroup variant="flush">
-            <ListGroup.Item>{`De: ${data.from} - ${data.date}`}</ListGroup.Item>
+            <ListGroup.Item>{`De: ${data.sender}`}</ListGroup.Item>
             <ListGroup.Item>{`Asunto: ${data.subject}`}</ListGroup.Item>
-            <ListGroup.Item>{`${data.message}`}</ListGroup.Item>
+            <ListGroup.Item>{`${data.body}`}</ListGroup.Item>
             </ListGroup>
         </Card>
     );
