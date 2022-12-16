@@ -25,7 +25,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
+      element: <Layout loginData={data}/>,
       children: [
         {
           path: "/mails",

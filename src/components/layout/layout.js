@@ -2,10 +2,10 @@ import React from "react";
 import NavBar from "../navbar/navbar";
 import { Outlet } from "react-router-dom";
 
-const Layout = ({ children }) => {
+const Layout = ({ loginData }) => {
     return (
         <>
-            <NavBar />
+            <NavBar loginData={loginData}/>
             <Outlet />
         </>
     );
